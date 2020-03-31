@@ -8,7 +8,13 @@
       <h2 class="subtitle">
         escrow-demo-frontend
       </h2>
-      <div class="links">
+      <nuxt-link v-for="post in posts"
+      :key="post.title"
+      :to="{name: 'posts-post', params:{title:post.title, content:post.content}}"
+      class="button--grey">
+      {{post.title}}
+      </nuxt-link>
+      <!-- <div class="links">
         <a
           href="https://nuxtjs.org/"
           target="_blank"
@@ -23,17 +29,25 @@
         >
           GitHub
         </a>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
 
 <script>
 import Logo from '~/components/Logo.vue'
+import axios from 'axios'
+import { async } from 'q'
 
 export default {
   components: {
     Logo
+  },
+
+  async asyncData () {
+    let {data} = await axios.get('http://localhost:8080/posts')
+    console.log(data)
+    return {posts:data}
   }
 }
 </script>

@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### 환경변수 설정 ###
+application.properties
