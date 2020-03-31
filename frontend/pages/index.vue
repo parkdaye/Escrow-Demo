@@ -1,47 +1,46 @@
-<template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        frontend
-      </h1>
-      <h2 class="subtitle">
-        escrow-demo-frontend
-      </h2>
-      <nuxt-link v-for="post in posts"
-      :key="post.title"
-      :to="{name: 'posts-post', params:{title:post.title, content:post.content}}"
-      class="button--grey">
-      {{post.title}}
-      </nuxt-link>
-      <!-- <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div> -->
-    </div>
-  </div>
+<template lang="pug">
+.page-home
+   section.intro
+      h1 Escrow Prototype
+    section.featured-post
+      PostPreview(
+        id="1",
+        title="테스트 포스트1",
+        thumbnail="//goo.gl/mJ5Vsy",
+        content="테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
+      )
+      PostPreview(
+        id="2",
+        title="테스트 포스트2",
+        thumbnail="//goo.gl/mJ5Vsy",
+        content="테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
+      )
+      PostPreview
+            
+  //- <div class="container">
+  //-   <div>
+  //-     <h1>홈페이지</h1>
+  //-     <!-- <h2 class="subtitle">
+  //-       escrow-demo-frontend
+  //-     </h2>
+  //-     <nuxt-link v-for="post in posts"
+  //-     :key="post.title"
+  //-     :to="{name: 'posts-post', params:{title:post.title, content:post.content}}"
+  //-     class="button--grey">
+  //-     {{post.title}}
+  //-     </nuxt-link> -->
+  //-   </div>
+  //- </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import PostPreview from '~/components/posts/PostPreview'
 import axios from 'axios'
 import { async } from 'q'
 
 export default {
   components: {
-    Logo
+    PostPreview
   },
 
   async asyncData () {
@@ -52,35 +51,31 @@ export default {
 }
 </script>
 
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+<style lang="sass" scoped>
+  .intro
+    position: relative
+    height: 200px
+    margin-bottom: 20px
+    padding: 30px
+    background: darken(#5db4f3, 40%) top center
+    background-size: cover
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
+    h1
+      position: absolute
+      top: 5%
+      left: 5%
+      width: 90%
+      font-size: 1.5rem
+      color: lighten(#5db4f3, 20%)
+      background-color: rgba(#5db4f3, 0.26)
+      border-radius: 4px
+      padding: 10px
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
+  .featured-posts
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-wrap: wrap
+    padding: 20px
 
-.links {
-  padding-top: 15px;
-}
 </style>
