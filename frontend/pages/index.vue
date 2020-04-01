@@ -1,6 +1,6 @@
 <template lang="pug">
 .page-home
-  section.featured-post
+  section.featured-posts
     PostPreview(
       id="1",
       title="테스트 포스트1",
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import PostPreview from "~/components/posts/PostPreview";
+import PostPreview from "@/components/posts/PostPreview";
 import axios from "axios";
 import { async } from "q";
 
@@ -51,21 +51,22 @@ export default {
 <style lang="sass" scoped>
 @import "~assets/styles/config"
 
-h1
-  position: absolute
-  top: 5%
-  left: 5%
-  width: 90%
-  font-size: 1.5rem
-  color: lighten(#5db4f3, 20%)
-  background-color: rgba(#5db4f3, 0.26)
-  border-radius: 4px
-  padding: 10px
+a
+  text-decoration: none
+  color: darken($color, 20%)
+  transition: all 0.4s ease
+  &:hover .post-content,
+  &:active .post-content
+    background-color: rgba($color, 0.26)
 
 .featured-posts
   display: flex
   justify-content: center
-  align-items: center
+  align-items: flex-start
   flex-wrap: wrap
   padding: 20px
+
+@media (min-width: 768px)
+  .intro h1
+    font-size: 2rem
 </style>

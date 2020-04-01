@@ -2,9 +2,9 @@
 article.post-preview
   nuxt-link(:to="'/posts/'+ id")
     figure.post-thumbnail(:style="{'background-image': 'url('+ thumbnail +')'}")
-      .post-content
-        h2.post-title {{title}}
-        p.post-text {{ellipseContent}}
+    .post-content
+      h2.post-title {{title}}
+      p.post-text {{ellipseContent}}
 </template>
 
 <script>
@@ -30,23 +30,28 @@ export default {
 
 
 <style lang="sass" scoped>
+@import "~assets/styles/config"
+
 .post-preview
+  overflow: hidden
   border: 1px solid rgba(#aaa, 0.45)
+  border-radius: 6px
   box-shadow: 0 2px 2px rgba(#aaa, 0.45)
   background-color: #fff
   flex: 1 0 90%
   margin:
-  left: 5%
-  right: 5%
-  bottom: 15px
+    left: 5%
+    right: 5%
+    bottom: 15px
 
 a
   text-decoration: none
-  color: darken(#5db4f3, 20%)
-  transition: all 0.4s ease
+  color: darken($color, 20%)
   &:hover .post-content,
   &:active .post-content
-    background-color: rgba(#5db4f3, 0.26)
+    background: rgba(lighten($color, 5%), 0.1)
+  &:focus .post-content,
+    box-shadow: 0 -100px 50px 30px rgba($point-color, 0.4)
 
 .post-thumbnail
   width: 100%
@@ -64,13 +69,12 @@ a
 .post-content
   padding: 10px
   text-align: center
+  transition: all 0.4s ease
 
 @media (min-width: 768px)
-  .intro h1
-    font-size: 2rem
-    .post-preview
-      flex: 0 0 45%
-      margin:
+  .post-preview
+    flex: 0 0 45%
+    margin:
       left: 10px
       right: 10px
 </style>

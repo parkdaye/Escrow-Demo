@@ -1,7 +1,7 @@
 <template lang="pug">
   header.page-header
     h1.page-brand
-      nuxt-link(to="/") NUXT BLOG
+      nuxt-link(to="/") Escrow Prototype
     .spacer
     //- 모바일 내비게이션 토글 버튼
     button.button.nav-side-toggle(
