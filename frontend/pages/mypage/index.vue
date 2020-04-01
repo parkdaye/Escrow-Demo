@@ -1,0 +1,61 @@
+<template lang="pug">
+.page-mypage.container
+  section.create-post
+    h2.page-title 프로젝트 생성
+    p 새로운 프로젝트를 생성합니다.
+    UIButton(
+      type="button",
+      @click="$router.push('/mypage/create')"
+    ) 생성
+  section.posts
+    h2.page-title 프로젝트 리스트
+    p 참여중인 프로젝트입니다.
+    post-list
+</template>
+
+<script>
+import PostList from '@/components/posts/PostList'
+import UIButton from '@/components/ui/UIButton'
+
+export default {
+  components: { PostList, UIButton }
+}
+</script>
+
+<style lang="sass" scoped>
+@import "~assets/styles/config"
+
+.page-admin
+  padding: 20px
+
+.create-post
+  border-bottom: 1px solid rgba(#000, 0.2)
+  padding-bottom: 30px
+
+.page-title
+  margin-bottom: 0
+  font-family: Changa, Sans-Serif
+  letter-spacing: -0.03em
+
+.posts
+	margin-top: 30px
+
+p
+  margin-top: 0
+  color: rgba(#000, 0.5)
+  font-size: 13px
+  letter-spacing: -0.06em
+
+.button
+  cursor: pointer
+  border: none
+  border-radius: 4px
+  padding: 0.6em 1.2em
+  background: rgba(darken($point-color, 40%), 0.7)
+  color: #fff
+  font-weight: bold
+  transition: all 0.4s ease-out
+  &:hover,
+  &:focus
+    background: darken($point-color, 20%)
+</style>

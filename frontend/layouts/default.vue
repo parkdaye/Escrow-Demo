@@ -25,7 +25,7 @@ export default {
       navLinks: [
         { route: "/about", text: "서비스 소개" },
         { route: "/posts", text: "게시판" },
-        { route: '/admin', text: '관리자' }
+        { route: '/mypage', text: 'MyPage' }
       ]
     };
   },
