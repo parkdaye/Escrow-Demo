@@ -18,7 +18,13 @@ section.post-list
 import PostPreview from '@/components/posts/PostPreview'
 
 export default {
-  components: { PostPreview }
+  components: { PostPreview },
+  props: {
+    isMypage: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 

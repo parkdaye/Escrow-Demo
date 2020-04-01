@@ -3,26 +3,17 @@
   section.create-post-form
     h2.page-title 프로젝트 생성
     p 새로운 프로젝트를 생성합니다.
-    form(@submit.prevent="onSave")
-      UIInput(uniqueId="author", v-model="post.author") 작성자
-      UIInput(uniqueId="title", v-model="post.title") 제목
-      UIInput(uniqueId="thumbnail", v-model="post.thumbnail") 썸네일 이미지 링크
-      UIInput(controlType="textarea", uniqueId="content", v-model="post.content") 콘텐츠
-      UIButton 저장
-      UIButton(
-        type="UIButton",
-        style="margin-left: 10px",
-        styles="cancel",
-        @click="onCancel"
-      ) 취소
+    PostForm
 </template>
 
 <script>
 import UIButton from '@/components/ui/UIButton'
 import UIInput from '@/components/ui/UIInput'
+import PostForm from '@/components/posts/PostForm'
 
 export default {
   components: {
+    PostForm,
     UIButton,
     UIInput
   },

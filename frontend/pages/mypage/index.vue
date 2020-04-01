@@ -10,7 +10,7 @@
   section.posts
     h2.page-title 프로젝트 리스트
     p 참여중인 프로젝트입니다.
-    post-list
+    PostList(isMypage)
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template lang="pug">
 article.post-preview
-  nuxt-link(:to="'/posts/'+ id")
+  nuxt-link(:to="postLink")
     figure.post-thumbnail(:style="{'background-image': 'url('+ thumbnail +')'}")
     .post-content
       h2.post-title {{title}}
@@ -11,12 +11,16 @@ article.post-preview
 export default {
   name: "PostPreview",
   props: {
+    isMypage: { type: Boolean, required: true },
     id: { type: String, required: true },
     thumbnail: { type: String, required: true },
     title: { type: String, required: true },
     content: { type: String, required: true }
   },
   computed: {
+    postLink() {
+      return this.isMypage ? '/mypage/' + this.id : '/posts/' + this.id
+    },
     ellipseContent() {
       const ellipseText =
         this.content.length < 65
