@@ -1,16 +1,13 @@
 <template lang="pug">
 section.post-list
   PostPreview(
-    id="1",
-    title="테스트 포스트1",
-    thumbnail="//goo.gl/mJ5Vsy",
-    content="테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
-  )
-  PostPreview(
-    id="2",
-    title="테스트 포스트2",
-    thumbnail="//goo.gl/mJ5Vsy",
-    content="테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
+    v-for="post in posts",
+    :key="post.id",
+    :id="post.id",
+    :isMypage="isMypage",
+    :title="post.title",
+    :thumbnail="post.thumbnail",
+    :content="post.content"
   )
 </template>
 
@@ -23,6 +20,10 @@ export default {
     isMypage: {
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }

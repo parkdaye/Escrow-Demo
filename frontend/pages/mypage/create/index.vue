@@ -10,6 +10,7 @@
 import UIButton from '@/components/ui/UIButton'
 import UIInput from '@/components/ui/UIInput'
 import PostForm from '@/components/posts/PostForm'
+import axios from 'axios'
 
 export default {
   components: {
@@ -28,10 +29,12 @@ export default {
     }
   },
   methods: {
-    onSave() {
+    onSave(newPost) {
       // 글 저장 (비동기 통신 후 백엔드 DB에 저장)
-      // 추후 구현
-      console.log(this.post)
+      axios
+        .post('https://loacalhost:8080/posts', newPost)
+        .then(res => console.log(res))
+        .catch(e => console.error(e))
     },
     onCancel() {
       this.$router.push('/mypage')
