@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     postLink() {
-      return this.isMypage ? '/mypage/' + this.id : '/posts/' + this.id
+      return this.isMypage ? "/mypage/" + this.title : "/posts/" + this.title;
     },
     ellipseContent() {
       const ellipseText =
@@ -44,9 +44,9 @@ export default {
   background-color: #fff
   flex: 1 0 90%
   margin:
-    left: 5%
-    right: 5%
-    bottom: 15px
+  left: 5%
+  right: 5%
+  bottom: 15px
 
 a
   text-decoration: none
@@ -79,6 +79,6 @@ a
   .post-preview
     flex: 0 0 45%
     margin:
-      left: 10px
-      right: 10px
+    left: 10px
+    right: 10px
 </style>

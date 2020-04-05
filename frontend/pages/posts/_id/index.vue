@@ -14,21 +14,13 @@
 
 <script>
 export default {
-  asyncData({ route }, callback) {
-    setTimeout(() => {
-      callback(new Error(), {
-        // 1초 지연된 데이터 로드 시뮬레이션
-        loadedPost: {
-          id: "1",
-          title: "테스트",
-          author: "daye",
-          updatedDate: new Date().toLocaleString(),
-          thumbnail: "//goo.gl/mJ5Vsy",
-          content:
-            "테스트스테스테스트트"
-        }
-      });
-    }, 1000);
+  computed: {
+    loadedPost() {
+      const id = this.$route.params.id - 1;
+      return this.$store.getters.loadedPosts.find(
+        post => post.title.replace(/\?/, '') === id
+      )
+    }
   }
 };
 </script>

@@ -9,31 +9,12 @@
 import PostList from '@/components/posts/PostList'
 
 export default {
-  asyncData(context) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve({
-          loadedPosts: [
-            {
-              id: "1",
-              title: "테스트 포스트1",
-              thumbnail: "//goo.gl/mJ5Vsy",
-              content: "테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
-            },
-            {
-              id: "2",
-              title: "테스트 포스트2",
-              thumbnail: "//goo.gl/mJ5Vsy",
-              content: "테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
-            }
-          ]
-        })
-      }, 1000) 
-    })
-      .then(data => data)
-      .catch(e => context.error(e))
-  },
-  components: { PostList }
+  components: { PostList },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
+  }
 }
 </script>
 

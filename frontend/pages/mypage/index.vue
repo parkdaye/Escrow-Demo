@@ -10,7 +10,7 @@
   section.posts
     h2.page-title 프로젝트 리스트
     p 참여중인 프로젝트입니다.
-    PostList(isMypage)
+    PostList(isMypage, :posts="loadedPosts")
 </template>
 
 <script>
@@ -18,7 +18,12 @@ import PostList from '@/components/posts/PostList'
 import UIButton from '@/components/ui/UIButton'
 
 export default {
-  components: { PostList, UIButton }
+  components: { PostList, UIButton },
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
+  }
 }
 </script>
 

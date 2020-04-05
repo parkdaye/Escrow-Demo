@@ -38,6 +38,12 @@ export default {
     },
     onCancel() {
       this.$router.push('/mypage')
+    },
+    onSubmitted(newPost) {
+      // 스토어에 createPost 디스패치
+      this.$store
+        .dispatch('createPost', newPost)
+        .then(() => this.$router.push('/mypage'))
     }
   }
 }

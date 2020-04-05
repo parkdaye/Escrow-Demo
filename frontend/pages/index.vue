@@ -27,31 +27,10 @@ export default {
   components: {
     PostList
   },
-  asyncData(context, callback) {
-    console.log(context)
-    setTimeout(() => {
-      callback(null, {
-        loadedPosts: [
-        {
-          id: "1",
-          title: "테스트 포스트1",
-          thumbnail: "//goo.gl/mJ5Vsy",
-          content: "테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
-        },
-        {
-          id: "2",
-          title: "테스트 포스트2",
-          thumbnail: "//goo.gl/mJ5Vsy",
-          content: "테스트랍니다 헤헿 새벽 세시 졸리다 헿헤"
-        }
-        ]
-      })
-    }, 1200)
-  },
-  data() {
-    return {
-      loadedPosts: []
-    };
+  computed: {
+    loadedPosts() {
+      return this.$store.getters.loadedPosts
+    }
   }
   // async asyncData() {
   //   let { data } = await axios.get("http://localhost:8080/posts");
