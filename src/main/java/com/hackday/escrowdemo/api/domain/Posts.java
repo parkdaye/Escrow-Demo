@@ -33,4 +33,12 @@ public class Posts {
         this.content = content;
         this.author = author;
     }
+
+    public Posts update(Posts post) {
+        this.title = post.title;
+        this.content = post.content;
+        this.author = post.author;
+
+        return this;
+    }
 }
